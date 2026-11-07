@@ -1,0 +1,9 @@
+n=2: 4 networks passed; insertion-network average=1/2
+n=3: 4 networks passed; insertion-network average=3/2
+n=4: 4 networks passed; insertion-network average=3
+n=5: 4 networks passed; insertion-network average=5
+n=6: 4 networks passed; insertion-network average=15/2
+n=7: 4 networks passed; insertion-network average=21/2
+PASS: 24 networks, exact per-comparator agreement
+baseline: permutations=3628800 max=21 total=39104640 average=10.7761904762 witness=1 5 3 7 9 8 4 0 6 2 
+contribution: permutations=3628800 max=20 total=41708160 average=11.4936507937 witness=1 5 7 6 9 8 3 0 4 2 
