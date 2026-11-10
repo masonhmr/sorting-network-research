@@ -1,6 +1,6 @@
 # Evidence ledger
 
-Checked November 6, 2026. Commit links pin the evidence to a specific historical version; live pages may change.
+Pinned attribution sources rechecked November 9, 2026. Commit links pin the evidence to a specific historical version; live pages may change.
 
 | Claim | Source | What the source establishes |
 | --- | --- | --- |
@@ -21,10 +21,13 @@ The 26 credited average-swap sizes are: **18, 19, 24, 26, 29, 31, 33, 35, 37, 41
 
 ## Reproduction and limits
 
-The new portfolio checks were run locally on November 6, 2026 (America/New_York). [VALIDATION.txt](VALIDATION.txt) records actual output. The exhaustive checker confirms sorting and worst-case counts for both 10-input networks; the Python tests confirm the weighted-counting identity on 24 small networks. No full rerun of the historical project, all large-input results, or optimality certificates was performed for this portfolio.
+The verification suite and archived network inventory were added November 9, 2026 (America/New_York). [VALIDATION.txt](VALIDATION.txt) records actual output; [VERIFICATION.md](VERIFICATION.md) defines each check's scope. The exhaustive checker confirms sorting and worst-case counts for both 10-input networks. The Python identity tests cover 24 small networks; all 84 archived contributed versions receive bounded regression tests. Large-input swap averages and full large-network correctness proofs are not reproduced.
+
+All 84 sequences and layer schedules are in [data/networks.json](../data/networks.json), each with its incorporation date and commit-pinned source. The second median snapshot includes the five surviving first-batch entries; the importer retained those only once, yielding 19 + 38 median versions. The optional `python tools/verify_upstream.py` checks exact layer-by-layer transcription and the named credit on all contributed source rows.
 
 The public incorporation records are third-party evidence of acceptance and attribution. Separately implemented AI checkers are a different kind of evidence; they are not independent human review. The portfolio does not claim journal publication, universal optimality, or engineering performance measurements.
 
 ## Historical project material
 
 The original submission material is retained separately. This public repository contains the dated portfolio and new reproduction tools, rather than the full historical search engine. The pinned upstream records above provide public evidence without requiring access to a private archive.
+
