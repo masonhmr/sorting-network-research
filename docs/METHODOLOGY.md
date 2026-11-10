@@ -28,9 +28,17 @@ Every actual swap is counted exactly once: at the distinguished rank equal to it
 
 $$p_k=\frac{T_k}{n!},\qquad A(N)=\frac{\sum_k T_k}{n!}.$$
 
-There are $n\,2^{n-1}$ words across all choices of marked position and smaller-value positions. A direct implementation takes $O(s\,n\,2^{n-1})$ time, with polynomial space when words are processed one at a time. It is still exponential. The historical implementation used bit slicing; the reference script here favors clarity and exact Python integers.
+There are $n\,2^{n-1}$ words across all choices of marked position and smaller-value positions. A direct implementation takes $O(s\,n\,2^{n-1})$ time, with polynomial space when words are processed one at a time. It is still exponential. The reference script favors clarity and exact Python integers. Bit slicing can improve constant factors, but does not remove the exponential scaling.
 
 For a two-input comparator, only the ternary word `(1,0)` contributes to the numerator. Its weight is 1, giving an exact average of $1/2$ swap.
+
+### Large-input computation is not reproduced here
+
+For 63 inputs, direct enumeration requires 63 × 2^62 = 290,536,219,160,925,437,952 words, before accounting for the comparator work per word. This is not a practical explanation of the published 63-input computation. No claim is made that the included reference script performed it.
+
+The October 18 upstream page states that most values use an exact method, subject to network structure and checker resource limits; the 63-input value is displayed without a sampling uncertainty. We report it as **upstream-reported exact-method output, rounded to eight decimals**. The historical large-input implementation, exact numerator/denominator certificates, hardware, runtime, and resource measurements are not available in this public repository. We cannot reconstruct its acceleration strategy from that acknowledgment alone. This gap remains explicit rather than being filled with an assumed algorithm. The 52-input value remains a sampled estimate.
+
+The new verification command checks the large networks on bounded test inputs; it does not certify their average swap values. A complete large-input reproduction would require the actual scalable counter, its inputs and resource configuration, and exact integer outputs checked by an independent implementation.
 
 ## 3. Search through input-order transformations
 
@@ -55,3 +63,4 @@ The preservation statement concerns a transformation of one base network. It doe
 Mason Hemmer established and directed the project and coordinated submission. Claude agents implemented and ran the historical search/checking work; ChatGPT and Codex assisted with review and implementation as described in the linked acknowledgments. Starting networks and the public collection are credited to Bert Dobbelaere / SorterHunter. Untangling is classical (Knuth, TAOCP Vol. 3, section 5.3.4, Exercise 16); related exchange-probability ideas appear in [Paeth's NICE networks](https://arxiv.org/abs/1808.05212).
 
 This exposition is based on the archived project technical note. Historical implementation timings and optimality certificates are not presented as newly reproduced results. See [the evidence ledger](EVIDENCE.md) for public incorporation records.
+
