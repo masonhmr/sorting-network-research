@@ -1,3 +1,7 @@
+Local validation: November 9, 2026 (America/New_York)
+Python 3.12; C++17 compiler; no third-party runtime dependencies.
+
++ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python tools/verify_counting.py
 n=2: 4 networks passed; insertion-network average=1/2
 n=3: 4 networks passed; insertion-network average=3/2
 n=4: 4 networks passed; insertion-network average=3
@@ -5,5 +9,96 @@ n=5: 4 networks passed; insertion-network average=5
 n=6: 4 networks passed; insertion-network average=15/2
 n=7: 4 networks passed; insertion-network average=21/2
 PASS: 24 networks, exact per-comparator agreement
++ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python tools/verify_networks.py
+PASS 1/84 median N25L93D13: 2080 regression inputs
+PASS 2/84 median N26L100D12: 2083 regression inputs
+PASS 3/84 median N41L192D17: 2128 regression inputs
+PASS 4/84 median N49L267D19: 2152 regression inputs
+PASS 5/84 median N50L275D18: 2155 regression inputs
+PASS 6/84 median N51L268D20: 2158 regression inputs
+PASS 7/84 median N51L283D19: 2158 regression inputs
+PASS 8/84 median N53L271D21: 2164 regression inputs
+PASS 9/84 median N53L294D20: 2164 regression inputs
+PASS 10/84 median N54L276D20: 2167 regression inputs
+PASS 11/84 median N55L279D23: 2170 regression inputs
+PASS 12/84 median N55L283D21: 2170 regression inputs
+PASS 13/84 median N55L306D20: 2170 regression inputs
+PASS 14/84 median N55L315D19: 2170 regression inputs
+PASS 15/84 median N56L289D20: 2173 regression inputs
+PASS 16/84 median N57L292D23: 2176 regression inputs
+PASS 17/84 median N57L319D20: 2176 regression inputs
+PASS 18/84 median N59L330D20: 2182 regression inputs
+PASS 19/84 median N61L342D20: 2188 regression inputs
+PASS 20/84 median N26L98D12: 2083 regression inputs
+PASS 21/84 median N29L114D15: 2092 regression inputs
+PASS 22/84 median N37L167D16: 2116 regression inputs
+PASS 23/84 median N39L177D16: 2122 regression inputs
+PASS 24/84 median N43L203D17: 2134 regression inputs
+PASS 25/84 median N45L213D18: 2140 regression inputs
+PASS 26/84 median N47L230D18: 2146 regression inputs
+PASS 27/84 median N48L235D17: 2149 regression inputs
+PASS 28/84 median N49L238D20: 2152 regression inputs
+PASS 29/84 median N50L254D19: 2155 regression inputs
+PASS 30/84 median N50L274D18: 2155 regression inputs
+PASS 31/84 median N51L258D20: 2158 regression inputs
+PASS 32/84 median N52L274D19: 2161 regression inputs
+PASS 33/84 median N52L289D18: 2161 regression inputs
+PASS 34/84 median N53L269D21: 2164 regression inputs
+PASS 35/84 median N53L279D20: 2164 regression inputs
+PASS 36/84 median N54L274D20: 2167 regression inputs
+PASS 37/84 median N54L289D19: 2167 regression inputs
+PASS 38/84 median N55L277D23: 2170 regression inputs
+PASS 39/84 median N55L281D21: 2170 regression inputs
+PASS 40/84 median N55L295D20: 2170 regression inputs
+PASS 41/84 median N56L286D20: 2173 regression inputs
+PASS 42/84 median N56L300D19: 2173 regression inputs
+PASS 43/84 median N57L289D23: 2176 regression inputs
+PASS 44/84 median N57L293D21: 2176 regression inputs
+PASS 45/84 median N57L307D20: 2176 regression inputs
+PASS 46/84 median N58L298D20: 2179 regression inputs
+PASS 47/84 median N58L312D19: 2179 regression inputs
+PASS 48/84 median N59L301D23: 2182 regression inputs
+PASS 49/84 median N59L305D21: 2182 regression inputs
+PASS 50/84 median N59L319D20: 2182 regression inputs
+PASS 51/84 median N60L312D23: 2185 regression inputs
+PASS 52/84 median N60L313D20: 2185 regression inputs
+PASS 53/84 median N60L325D19: 2185 regression inputs
+PASS 54/84 median N61L315D26: 2188 regression inputs
+PASS 55/84 median N61L316D23: 2188 regression inputs
+PASS 56/84 median N61L331D20: 2188 regression inputs
+PASS 57/84 median N63L356D20: 2194 regression inputs
+PASS 58/84 average_swaps N18L77D12: 2059 regression inputs
+PASS 59/84 average_swaps N19L85D12: 2062 regression inputs
+PASS 60/84 average_swaps N24L120D13: 2077 regression inputs
+PASS 61/84 average_swaps N26L138D15: 2083 regression inputs
+PASS 62/84 average_swaps N29L164D15: 2092 regression inputs
+PASS 63/84 average_swaps N31L180D14: 2098 regression inputs
+PASS 64/84 average_swaps N33L199D15: 2104 regression inputs
+PASS 65/84 average_swaps N35L220D17: 2110 regression inputs
+PASS 66/84 average_swaps N37L240D17: 2116 regression inputs
+PASS 67/84 average_swaps N41L282D19: 2128 regression inputs
+PASS 68/84 average_swaps N43L303D19: 2134 regression inputs
+PASS 69/84 average_swaps N45L324D19: 2140 regression inputs
+PASS 70/84 average_swaps N47L340D19: 2146 regression inputs
+PASS 71/84 average_swaps N49L365D21: 2152 regression inputs
+PASS 72/84 average_swaps N50L376D21: 2155 regression inputs
+PASS 73/84 average_swaps N51L387D22: 2158 regression inputs
+PASS 74/84 average_swaps N52L395D20: 2161 regression inputs
+PASS 75/84 average_swaps N53L411D22: 2164 regression inputs
+PASS 76/84 average_swaps N55L432D20: 2170 regression inputs
+PASS 77/84 average_swaps N56L438D20: 2173 regression inputs
+PASS 78/84 average_swaps N57L454D21: 2176 regression inputs
+PASS 79/84 average_swaps N58L465D21: 2179 regression inputs
+PASS 80/84 average_swaps N59L476D21: 2182 regression inputs
+PASS 81/84 average_swaps N61L497D22: 2188 regression inputs
+PASS 82/84 average_swaps N62L506D21: 2191 regression inputs
+PASS 83/84 average_swaps N63L515D21: 2194 regression inputs
+PASS 84/84 worst_case_swaps N10L29D8WCS20: 2035 regression inputs
+PASS: all 84 networks passed bounded regression checks; NOT exhaustive correctness proofs or exact average verification
++ c++ -O3 -std=c++17 tools/verify_worst_case.cpp -o /tmp/tmpqrj57pni/verify_worst_case
++ /tmp/tmpqrj57pni/verify_worst_case /tmp/tmpqrj57pni/networks.txt
 baseline: permutations=3628800 max=21 total=39104640 average=10.7761904762 witness=1 5 3 7 9 8 4 0 6 2 
 contribution: permutations=3628800 max=20 total=41708160 average=11.4936507937 witness=1 5 7 6 9 8 3 0 4 2 
+PASS: verification suite complete. Large-input average values remain upstream-reported, not locally recomputed.
+
+PASS: 84 contributions and baseline match pinned sources retrieved through GitHub connector
