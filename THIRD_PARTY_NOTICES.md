@@ -2,7 +2,7 @@
 
 Published network sequences and source table data are derived from Bert Dobbelaere's [SorterHunter](https://github.com/bertdobbelaere/SorterHunter) collection. Exact historical source links appear in docs/EVIDENCE.md and docs/RESULTS.md. The two sequences in tools/verify_worst_case.cpp come from the before/after diff of commit 9187435b0eb9ef6761a0a18c56331504d400a1bd.
 
-The following upstream license is retained for that material. This notice does not assign a blanket license to other project content.
+The following upstream license is retained for that material. Original portfolio code and documentation are MIT licensed under LICENSE. The upstream copyright and license below continue to apply to the imported network sequences and source data.
 
 ## Upstream MIT License
 
@@ -25,3 +25,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
