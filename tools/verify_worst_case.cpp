@@ -2,20 +2,26 @@
 #include <array>
 #include <cstdint>
 #include <iomanip>
+#include <fstream>
 #include <iostream>
 #include <utility>
 #include <vector>
 
-// Network sequences transcribed from upstream commit 9187435 (see docs/EVIDENCE.md).
-int main() {
+// Read the archived baseline and contribution supplied by verify_all.py.
+int main(int argc, char** argv) {
+  if(argc != 2) {std::cerr << "Usage: verify_worst_case networks.txt\n"; return 3;}
+  std::ifstream input_file(argv[1]);
   using P = std::pair<int,int>;
-  const std::vector<P> suffix={{1,2},{3,5},{4,6},{7,8},{2,3},{4,5},{6,7},{3,4},{5,6}};
-  std::vector<std::vector<P>> nets={
-    {{0,7},{1,6},{2,9},{3,8},{4,5},{0,3},{1,4},{5,8},{6,9},{0,2},{3,6},{7,9},{0,1},{2,4},{5,7},{8,9},{1,3},{2,5},{4,7},{6,8}},
-    {{0,7},{1,8},{2,3},{4,5},{6,9},{0,4},{1,2},{3,9},{5,8},{0,6},{3,4},{7,9},{0,1},{2,6},{5,7},{8,9},{1,3},{2,5},{4,8},{6,7}}
-  };
+  std::vector<std::vector<P>> nets(2);
+  for(auto &net:nets) for(int k=0;k<29;++k) {
+    int a,b;
+    if(!(input_file >> a >> b) || a<0 || a>=b || b>=10) return 3;
+    net.emplace_back(a,b);
+  }
+  std::string extra;
+  if(input_file >> extra) return 3;
   for (int id=0;id<2;++id) {
-    auto net=nets[id];net.insert(net.end(),suffix.begin(),suffix.end());
+    const auto &net=nets[id];
     std::array<int,10> input={0,1,2,3,4,5,6,7,8,9}, witness{};
     std::uint64_t total=0,count=0;int worst=-1;
     do {
@@ -31,3 +37,4 @@ int main() {
     for(int v:witness)std::cout<<v<<' ';std::cout<<'\n';
   }
 }
+
