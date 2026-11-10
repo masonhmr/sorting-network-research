@@ -1,95 +1,81 @@
-# Mason Hemmer
+# Median-selection and swap-count optimization
 
-### Algorithms research · Exact counting · AI-assisted engineering
+**Mason Hemmer · AI-assisted research · October 2026**
 
-**From a research objective to externally incorporated algorithmic improvements.**
+My project contributed a 10-input sorting network that reduces worst-case swaps from **21 to 20**, using the same **29 comparators and 8 layers**. Bert Dobbelaere incorporated it into SorterHunter on October 10, 2026. The included C++ checker evaluates all **3,628,800 input permutations** for both networks.
 
-Research contributions: **October 2026** · Portfolio verified: **November 6, 2026**
+[Verify the result](#run-the-checks) · [Network data](data/networks.json) · [Results](docs/RESULTS.md) · [Upstream evidence](docs/EVIDENCE.md) · [Methodology](docs/METHODOLOGY.md)
 
-I established and directed a project to improve sorting and median-selection networks, organized the search and verification workflow, and coordinated submissions for external review. The public maintainer records credit the resulting networks and an idea behind exact average-swap counting.
+## What this project contributed
 
-**57 median-network contributions · 26 average-swap networks · 21 → 20 worst-case swaps for 10 inputs**
+These contributions concern **median selection, average swaps, and worst-case swaps**. This portfolio makes no claim to a new general sorting-network size or depth record in the main sorting tables, and no claim of global optimality or measured runtime speedup.
 
-[Results matrix](docs/RESULTS.md) · [Methodology and derivation](docs/METHODOLOGY.md) · [Public evidence](docs/EVIDENCE.md) · [Run the checks](#reproduce-the-core-claims)
+| Objective | Accepted network versions | Distinct targets | Evidence in this repository |
+| --- | ---: | ---: | --- |
+| Median selection | 57 | 43 | All sequences and layer schedules; bounded correctness checks |
+| Average swaps | 26 | 26 | All sequences; bounded sorting checks; published comparison values |
+| Worst-case swaps | 1 | 1 | Sequence; exhaustive before/after swap counts |
+| **Total** | **84** | **70** | **14 median versions revisit an earlier target** |
 
-## Contribution timeline
+A median target is an input-count/depth pair; an average-swap target is an input count; the worst-case objective is counted separately. These are contribution counts, not 70 independently proven records. In particular, the old sampled 31-input average does not establish a positive gain. The November 7 audit found 68 contributed entries still listed; that is a dated observation, not a live guarantee.
 
-Dates below are documented public incorporation dates, rather than inferred discovery dates. Each links to a permanent contribution record. Later improvements do not change this historical attribution.
+## Lead result: one fewer worst-case swap
 
-| Public incorporation | Contribution | Permanent record |
-| --- | --- | --- |
-| **October 5, 2026** | First 19 median-selection networks | [Maintainer acknowledgment](https://github.com/bertdobbelaere/SorterHunter/commit/99eb2a5e7cfec223517a01bc7a80a51ca1b246de) |
-| **October 10, 2026** | 10-input worst-case swaps: 21 → 20 | [Before/after diff](https://github.com/bertdobbelaere/SorterHunter/commit/9187435b0eb9ef6761a0a18c56331504d400a1bd) |
-| **October 17, 2026** | 38 additional median-selection networks | [38 committed network files](https://github.com/bertdobbelaere/SorterHunter/commit/4f1b0c9351eb5aa5f2a4b6f582a4e7402cce0f57) |
-| **October 18, 2026** | 26 average-swap networks and exact-counting idea credit | [Maintainer acknowledgment](https://github.com/bertdobbelaere/SorterHunter/commit/2d3c63b0ca965768243e0e3b1c33b4a030b08613) |
+| Metric | Previous network | Contributed network |
+| --- | ---: | ---: |
+| Inputs | 10 | 10 |
+| Comparators | 29 | 29 |
+| Layers | 8 | 8 |
+| Maximum swaps | 21 | **20** |
+| Average swaps | 10.77619048 | 11.49365079 |
 
-The second median batch is dated October 16 in the page history and October 17 in the Git commits. Both dates are retained in the [evidence ledger](docs/EVIDENCE.md).
+The maximum falls by **4.7619%**. The average increases: this network targets the worst case. Both counts are reproduced locally, with an input witnessing each maximum. [Maintainer's before/after commit](https://github.com/bertdobbelaere/SorterHunter/commit/9187435b0eb9ef6761a0a18c56331504d400a1bd).
 
-## Selected before / after results
+## Average-swap results in context
 
-| Incorporated | Inputs | Objective | Old count | Contributed count | Reduction |
-| --- | ---: | --- | ---: | ---: | ---: |
-| 2026-10-10 | 10 | Worst-case swaps | 21 | **20** | **4.762%** |
-| 2026-10-18 | 18 | Average swaps | 27.5617 ± 0.0013 | 27.53892317 | ≈ 0.083% |
-| 2026-10-18 | 29 | Average swaps | 57.4128 ± 0.0019 | 57.30485000 | ≈ 0.188% |
-| 2026-10-18 | 33 | Average swaps | 71.8951 ± 0.0022 | 71.38180359 | ≈ 0.714% |
-| 2026-10-18 | 35 | Average swaps | 77.3440 ± 0.0021 | 76.99453654 | ≈ 0.452% |
-| 2026-10-18 | 63 | Average swaps | 179.8926 ± 0.0045 | 178.91981218 | ≈ 0.541% |
+| Inputs | Old published average | Contributed average | Approximate reduction | Size/depth |
+| ---: | ---: | ---: | ---: | --- |
+| 26 | 49.3629 ± 0.0018 | 48.39758018 | 1.956% | 139/14 → 138/15 |
+| 33 | 71.8951 ± 0.0022 | 71.38180359 | 0.714% | 199/16 → 199/15 |
+| 63 | 179.8926 ± 0.0045 | 178.91981218 | 0.541% | 515/21 → 515/21 |
 
-The worst-case comparison is exact and retains 29 comparators and 8 layers. Average-swap percentages compare old sampled central values with the new exact-method values displayed in the public table; they are approximate, not certified exact gains. The 33-input published entry also changes depth from 16 to 15. See the [full 26-row matrix](docs/RESULTS.md) for dimensions, uncertainty, the 26-input tradeoff, and the unresolved sampled comparison at 31 inputs.
+The old values are sampled estimates. New values above are **reported by the upstream exact method**, rounded for display; this repository does not recompute those large-input averages. The 26-input result trades an extra layer for fewer comparators. All other positive displayed reductions in the [26-row matrix](docs/RESULTS.md) are below 1%; the 31-input gain is unresolved against its sampled baseline. None of these percentages is a measured execution-time improvement.
 
-## Engineering approach
+## Run the checks
 
-**Define a measurable objective.** Separate comparison count, parallel depth, average swaps, and worst-case swaps so that each search targets an explicit outcome.
-
-**Build a verification path.** Use exact counting where feasible, cross-check with separately implemented code, and preserve sampled uncertainty where exact evaluation is unavailable.
-
-**Close the loop with an external maintainer.** Package candidate networks and supporting evidence, coordinate review, and connect incorporated results to permanent public records.
-
-The strongest evidence of this work is inspectable: upstream attribution, a pinned before/after matrix, the mathematical derivation, and executable reproduction checks.
-
-## The counting idea
-
-A comparison does not always cause a swap. To count average swaps exactly, mark one input rank, map smaller values to 0, the marked value to 1, and larger values to 2. Each resulting word represents a known number of distinct permutations. Count when the marked larger operand meets a smaller operand, and weight that event by the number of represented permutations.
-
-This replaces direct enumeration of $n!$ permutations with $n\,2^{n-1}$ three-valued words. For comparator $k$, let $T_k$ be its weighted swap count:
-
-$$A(N)=\frac{1}{n!}\sum_k T_k.$$
-
-The maintainer credits an idea proposed by Mason Hemmer for this three-valued refinement. [Full derivation, assumptions, and prior-work attribution](docs/METHODOLOGY.md).
-
-## Reproduce the core claims
-
-Requires Python 3.10+ and a C++17 compiler. No external Python packages or network access are needed after cloning.
+Use Linux, Python 3.12, and a C++17 compiler. The suite uses only the Python standard library and a C++17 compiler; no package installation or network access is needed:
 
 ```bash
-python3 tools/verify_counting.py
-c++ -O3 -std=c++17 tools/verify_worst_case.cpp -o /tmp/verify_worst_case
-/tmp/verify_worst_case
+python3 -m venv .venv
+source .venv/bin/activate
+python tools/verify_all.py
 ```
 
-- The Python check compares exact per-comparator ternary totals against brute force for **24 deterministic test networks**, including non-sorting networks, across 2–7 inputs.
-- The C++ check evaluates **all 3,628,800 permutations of each 10-input network**, checks sorted output, reports exact total swaps, and prints a worst-case witness. Expected maxima: **21 before, 20 after**.
+The same command runs on every push and pull request in [GitHub Actions](.github/workflows/verify.yml).
 
-These are new, readable reproduction tools for this portfolio. They are not the original search engine and do not reverify all 57 median or 26 average-swap contributions. [Recorded run output](docs/VALIDATION.txt).
+The suite checks the inventory and layer schedules, tests every bundled network on more than 2,000 deterministic inputs, cross-checks the counting identity on 24 small networks, and exhaustively verifies both 10-input swap counts. The large-network regression tests are not exhaustive proofs. The suite **does not** establish large-input swap averages or optimality. [Verification scope and recorded output](docs/VERIFICATION.md).
 
-## Project responsibilities
+## The exact-counting idea—and its limit
 
-**Mason Hemmer:** project establishment, research direction, review of outputs, and submission coordination. **Claude agents:** historical search, implementation, and checking work. **ChatGPT / Codex:** AI-assisted review, additional checking, and implementation, as acknowledged in the upstream records. **Bert Dobbelaere / SorterHunter:** published starting networks, collection, and incorporation.
+The upstream maintainer credits an idea I proposed: distinguish one input rank and map other ranks to smaller/equal/larger values. Weighted counts of these three-valued inputs give exact swap probabilities. The simple reference algorithm visits `n × 2^(n−1)` words.
 
-The underlying untangling construction is classical. Scope, prior work, and the distinction between incorporation and optimality are documented in [Methodology](docs/METHODOLOGY.md) and [Evidence](docs/EVIDENCE.md).
+At 63 inputs that is **290,536,219,160,925,437,952 words**. This reference implementation cannot practically reproduce the published 63-input average. The large-input computation's implementation, resource usage, and exact integer certificate are not included here; bit slicing alone does not resolve that gap. The value is retained as upstream-reported, not presented as a locally reproduced result. [Derivation and scope](docs/METHODOLOGY.md).
 
-## Repository guide
+## My role and AI assistance
 
-| File | Purpose |
-| --- | --- |
-| [docs/RESULTS.md](docs/RESULTS.md) | Complete published before/after matrix and qualifications |
-| [docs/METHODOLOGY.md](docs/METHODOLOGY.md) | Exact-counting derivation and transformation objective |
-| [docs/EVIDENCE.md](docs/EVIDENCE.md) | Pinned third-party evidence and claim boundaries |
-| [data/average_swap_comparison.csv](data/average_swap_comparison.csv) | Machine-readable 26-row comparison |
-| [tools/verify_counting.py](tools/verify_counting.py) | Small-input exact-counting cross-check |
-| [tools/verify_worst_case.cpp](tools/verify_worst_case.cpp) | Exhaustive 10-input before/after verification |
+I established and directed the project and was responsible for submission. The [maintainer's acknowledgment](https://github.com/bertdobbelaere/SorterHunter/commit/99eb2a5e7cfec223517a01bc7a80a51ca1b246de) documents those responsibilities. Claude agents ran the historical searches and wrote checkers; ChatGPT reviewed the submission, wrote additional checking code, hardened inputs, and reran checks. The current portfolio tools and documentation were also developed with AI assistance.
 
-**Historical record policy:** Results are reported as incorporated in October 2026. They are not advertised as perpetually unbeaten records. Pinned source commits preserve the baseline and contributed values even if the live tables change.
+This repository does not claim that I personally wrote every implementation. It provides the accepted outputs, the public attribution, and checks a reviewer can run. The original search engine and a complete decision-by-decision project log are not included. Starting networks and the collection are credited to Bert Dobbelaere; the untangling construction is classical.
 
-Public records checked November 6, 2026. Upstream source notices are retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+## Public incorporation dates
+
+| Date | Contribution | Permanent evidence |
+| --- | --- | --- |
+| October 5, 2026 | 19 median versions | [Acknowledgment](https://github.com/bertdobbelaere/SorterHunter/commit/99eb2a5e7cfec223517a01bc7a80a51ca1b246de) |
+| October 10, 2026 | 21 → 20 worst-case swaps | [Before/after](https://github.com/bertdobbelaere/SorterHunter/commit/9187435b0eb9ef6761a0a18c56331504d400a1bd) |
+| October 17, 2026 | 38 median versions | [Network additions](https://github.com/bertdobbelaere/SorterHunter/commit/4f1b0c9351eb5aa5f2a4b6f582a4e7402cce0f57) |
+| October 18, 2026 | 26 average-swap versions and counting-idea credit | [Acknowledgment](https://github.com/bertdobbelaere/SorterHunter/commit/2d3c63b0ca965768243e0e3b1c33b4a030b08613) |
+
+These are incorporation dates, not inferred discovery dates. The second median batch's page history says October 16; its commits are October 17. Historical versions remain in the dataset even when a later network improves them.
+
+MIT licensed; upstream attribution and license are preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). See [application wording](docs/APPLICATION.md) for a short factual project description.
