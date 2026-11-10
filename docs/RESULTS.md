@@ -8,7 +8,7 @@
 
 Baseline: [page immediately before incorporation](https://github.com/bertdobbelaere/SorterHunter/blob/cbc16ccc17bd24b2f4265aa3a4139e02d23ea61b/sorting_networks_avgswaps.html). Contribution: [October 18, 2026 snapshot](https://github.com/bertdobbelaere/SorterHunter/blob/2d3c63b0ca965768243e0e3b1c33b4a030b08613/sorting_networks_avgswaps.html). These pinned snapshots prevent later table changes from silently altering the comparison.
 
-All old averages in this table are sampled estimates. The new values use the maintainer's exact method except the 52-input estimate. Percentages below compare displayed central values; they are approximate descriptive differences, not exact certified gains or runtime speedups. The source's ± terms are reproduced without assuming a confidence level.
+All old averages in this table are sampled estimates. The new values are upstream-reported exact-method outputs except the 52-input estimate; they are not recomputed by this repository. See [the large-input reproduction gap](METHODOLOGY.md#large-input-computation-is-not-reproduced-here). Percentages below compare displayed central values; they are approximate descriptive differences, not exact certified gains or runtime speedups. The source's ± terms are reproduced without assuming a confidence level.
 
 | Incorporated | Inputs | Old published average | Contributed average | Displayed-mean reduction | Size / depth (old → new) |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -63,3 +63,10 @@ Worst-case reduction: **1 swap, or 4.7619%**. Average swaps increase for this pa
 **Public incorporation: October 5 and October 17, 2026.**
 
 **57 incorporated contributions** across two batches: 19 acknowledged October 5 and 38 additional network files committed October 17. Median selection returns the middle value(s) without fully sorting all inputs. Its size/depth improvements must not be added to a swap-count percentage. These are historical contribution counts, not a claim of 57 currently unbeaten records. [Evidence](EVIDENCE.md).
+
+
+## Counting distinct contributions
+
+The archived inventory contains 84 versions across 70 distinct targets: 43 median input-count/depth pairs, 26 average-swap input sizes, and one worst-case target. Fourteen later median versions improve an earlier submission at the same input count and depth. This does not establish 70 certified gains: the 31-input average comparison is unresolved. The November 7 audit found 68 contributed entries still listed (41 median, 26 average, one worst-case); the count is dated, not maintained automatically.
+
+All sequences: [networks.json](../data/networks.json). Verification coverage: [VERIFICATION.md](VERIFICATION.md).
